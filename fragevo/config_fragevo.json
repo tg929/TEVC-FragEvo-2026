@@ -168,7 +168,7 @@
     "number_of_processors": null,
     "docking_cpu_per_dock": 5,
     "docking_timeout_seconds": 100,
-    "obabel_path": "/data2/ytg/anaconda3/envs/fraggpt/bin/obabel",
+    "obabel_path": "obabel",
     "obabel_gen3d_timeout_seconds": 30,
     "obabel_convert_timeout_seconds": 30,
     "obabel_fail_score": 99.9,

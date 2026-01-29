@@ -32,25 +32,17 @@ cd mgltools_x86_64Linux2_1.5.6
 cd ..
 ```
 - AutoDock Vina ([autodock vina downloads](https://autodock-vina.readthedocs.io/en/latest/index.html))/ QVina2 ([qvina2downloads](https://qvina.github.io/))
-Place the docking executable under the project root, or use the bundled executables from the AutoGrow fork: `./autogrow/docking/docking_executables/`.
+Place the docking executable under the project root, or use the bundled executables under `./autogrow/docking/docking_executables/`.
 ```bash
 chmod +x ./autodock_vina_*/bin/vina
 ```
 
-### AutoGrow (FragEvo fork)
-Fork of AutoGrow4.0 with minor modifications for FragEvo (GA operators + docking pipeline):
-```bash
-git clone https://github.com/tg929/autogrow.git autogrow
-```
-Place `autogrow/` under the project root directory.
+### AutoGrow
+This repository includes `autogrow/` under the project root (used for docking + GA operators).
 
 ### Initial population
 The initial population is under `datasets/initial_population/`. You can also provide your own initial population file and set its path in `fragevo/config_fragevo.json` (`workflow.initial_population_file`).
 
-### FragMLM pre-trained weighted
-<u><a href="https://drive.google.com/drive/folders/1BWxy8PBHk6zTSI1bTdrp-G2fS82uhT_B">Click here to download the weight files</a></u>
-
-After downloading, please place the weight files in the `./fragmlm/weights`.
 ## Usage
 Model-generated molecule results and analysis outputs are saved under `results/`. Note: SMILES in `results/smiles_output_300ranked_by_receptor.csv` contain explicit hydrogens (RDKit explicit-H SMILES) and are structurally equivalent to their implicit-hydrogen representations.
 ### 1.  Mini Test
