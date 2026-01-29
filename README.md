@@ -37,11 +37,19 @@ Place the docking executable under the project root, or use the bundled executab
 chmod +x ./autodock_vina_*/bin/vina
 ```
 
-### AutoGrow
-This repository includes `autogrow/` under the project root (used for docking + GA operators).
+
 
 ### Initial population
 The initial population is under `datasets/initial_population/`. You can also provide your own initial population file and set its path in `fragevo/config_fragevo.json` (`workflow.initial_population_file`).
+
+### Pre-trained Weights
+To reproduce the reported results, pre-trained model weights are required.
+
+> **Note:** Due to the double-blind review process, the download link for the weights is temporarily withheld.
+
+Once obtained, please place the weight files in the `./fragmlm/weights/` directory.
+
+> **Recommendation:** The default pipeline loads `fragmlm/weights/dpo_0_400.pt`. We recommend using this checkpoint for standard reproduction.
 
 ## Usage
 Model-generated molecule results and analysis outputs are saved under `results/`. Note: SMILES in `results/smiles_output_300ranked_by_receptor.csv` contain explicit hydrogens (RDKit explicit-H SMILES) and are structurally equivalent to their implicit-hydrogen representations.
