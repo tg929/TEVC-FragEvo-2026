@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-分子对接工作流程模块 (finetune)
+分子对接工作流程模块
 """
 import os
 import sys

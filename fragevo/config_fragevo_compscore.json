@@ -5,7 +5,7 @@
   },
   "workflow": {
     "output_directory": "FragEvo_output_compscore",
-    "max_generations": 10,
+    "max_generations": 25,
     "initial_population_file": "datasets/initial_population/initial_population.smi"
   },
   "gpt": {
@@ -132,7 +132,7 @@
   "docking": {
     "dock_choice": "QVinaDocking",
     "conversion_choice": "MGLToolsConversion",
-    "docking_exhaustiveness": 3,
+    "docking_exhaustiveness": 8,
     "docking_num_modes": 10,
     "seed": 42,
     "number_of_processors": null,
@@ -157,7 +157,7 @@
     }
   },
   "crossover_finetune": {
-    "crossover_attempts": 50,
+    "crossover_attempts": 300,
     "min_atom_match_mcs": 4,
     "max_time_mcs_prescreen": 1,
     "max_time_mcs_thorough": 1,
@@ -166,7 +166,7 @@
     "merge_attempts": 3
   },
   "mutation_finetune": {
-    "mutation_attempts": 50,
+    "mutation_attempts": 300,
     "max_mutations_per_parent": 2,
     "rxn_library": "all_rxns",
     "max_attempts_multiplier": 50,
