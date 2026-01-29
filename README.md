@@ -42,7 +42,7 @@ chmod +x ./autodock_vina_*/bin/vina
 ### Initial population
 The initial population is under `datasets/initial_population/`. You can also provide your own initial population file and set its path in `fragevo/config_fragevo.json` (`workflow.initial_population_file`).
 
-### Pre-trained Weights
+### FragMLM Pre-trained Weights
 To reproduce the reported results, pre-trained model weights are required.
 
 > **Note:** Due to the double-blind review process, the download link for the weights is temporarily withheld.
