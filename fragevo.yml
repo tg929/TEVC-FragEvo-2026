@@ -1,0 +1,37 @@
+name: fragevo
+channels:
+  - conda-forge  
+  - defaults
+dependencies:
+  - python=3.9 
+  - openbabel
+  - pyarrow
+  - pandas
+  - numpy
+  - scikit-learn
+  - rdkit
+  - h5py
+  - matplotlib
+  - seaborn
+  - jupyterlab
+  - wandb
+  - pytorch        
+  - transformers   
+  - accelerate
+  - datasets
+  - tokenizers
+  - pip
+  - pip:
+    - about-time
+    - alive-progress
+    - anndata
+    - cellxgene-census
+    - datamol
+    - evaluate
+    - gget
+    - pytdc 
+    - selfies
+    - safe-mol
+    - scanpy
+    - tiledbsoma
+   
