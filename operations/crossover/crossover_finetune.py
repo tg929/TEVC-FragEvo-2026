@@ -109,7 +109,10 @@ def main():
 
         ligand_new_smiles = None
         for _ in range(merge_attempts):
-            ligand_new_smiles = smiles_merge.run_main_smiles_merge(vars, parent1, parent2)
+            try:
+                ligand_new_smiles = smiles_merge.run_main_smiles_merge(vars, parent1, parent2)
+            except Exception:
+                ligand_new_smiles = None
             if ligand_new_smiles is not None:
                 break
         if ligand_new_smiles is None:
