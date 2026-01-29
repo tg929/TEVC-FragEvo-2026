@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 增强的多目标选择策略
-解决帕累托前沿"凹陷"问题的高级选择算法
 """
 import numpy as np
 from typing import List, Dict, Tuple
@@ -11,32 +10,19 @@ import logging
 logger = logging.getLogger(__name__)
 
 def identify_sparse_regions(objectives: np.ndarray, fronts: List[List[int]]) -> List[int]:
-    """
-    识别帕累托前沿中的稀疏区域
-    
-    Args:
-        objectives: 目标函数矩阵
-        fronts: 帕累托前沿列表
-        
-    Returns:
-        稀疏区域的分子索引列表
-    """
     if not fronts or not fronts[0]:
         return []
     
     first_front = fronts[0]
     if len(first_front) < 3:
         return first_front
-    
-    # 计算第一前沿中每个点到其邻居的平均距离
     front_objectives = objectives[first_front]
     distances = []
     
     for i, point in enumerate(front_objectives):
-        # 计算到其他所有点的欧几里得距离
+        
         other_points = np.delete(front_objectives, i, axis=0)
         point_distances = np.sqrt(np.sum((other_points - point) ** 2, axis=1))
-        # 使用最近邻距离作为稀疏度指标
         min_distance = np.min(point_distances) if len(point_distances) > 0 else 0
         distances.append(min_distance)
     

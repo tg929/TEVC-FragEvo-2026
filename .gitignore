@@ -1,3 +1,5 @@
-/data3/ytg/TEVC-FragEvo-2026/autogrow/*
-/data3/ytg/TEVC-FragEvo-2026/mgltools_x86_64Linux2_1.5.6/*
-/data3/ytg/TEVC-FragEvo-2026/fragmlm/weights/*
+autogrow/*
+mgltools_x86_64Linux2_1.5.6/*
+fragmlm/weights/*
+output/*
+*.pyc

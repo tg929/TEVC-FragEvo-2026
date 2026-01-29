@@ -62,33 +62,27 @@ def calculate_adaptive_weights(population_analysis: Dict[str, float],
     Returns:
         (docking_weight, qed_weight, sa_weight)
     """
-    # 基础权重
+    
     base_docking = 1.0
     base_qed = 0.5
     base_sa = 0.3
     
-    # 进化阶段调整
     early_stage = generation < max_generations * 0.3
     mid_stage = max_generations * 0.3 <= generation < max_generations * 0.7
     late_stage = generation >= max_generations * 0.7
     
     if early_stage:
-        # 早期：重点探索，平衡各目标
         docking_weight = base_docking
         qed_weight = base_qed * 1.2
         sa_weight = base_sa * 1.2
     elif mid_stage:
-        # 中期：根据种群分布调整
         docking_weight = base_docking * (1.5 if population_analysis.get('needs_better_docking', False) else 1.0)
         qed_weight = base_qed * (1.5 if population_analysis.get('needs_better_qed', False) else 1.0)
         sa_weight = base_sa * (1.5 if population_analysis.get('needs_better_sa', False) else 1.0)
     else:
-        # 后期：重点优化主要目标
         docking_weight = base_docking * 1.5
         qed_weight = base_qed * 0.8
         sa_weight = base_sa * 0.8
-    
-    # 归一化权重
     total_weight = docking_weight + qed_weight + sa_weight
     docking_weight /= total_weight
     qed_weight /= total_weight
@@ -117,21 +111,15 @@ def adaptive_multi_objective_selection(molecules_data: List[Dict], n_select: int
     
     # 分析当前种群分布
     analysis = analyze_population_distribution(molecules_data)
-    
-    # 计算自适应权重
     docking_weight, qed_weight, sa_weight = calculate_adaptive_weights(
         analysis, generation, max_generations
     )
-    
-    # 应用权重的目标矩阵
     objectives = np.array([
         [m['docking_score'] * docking_weight, 
          -m.get('qed_score', 0) * qed_weight, 
          m.get('sa_score', 10) * sa_weight] 
         for m in molecules_data
     ])
-    
-    # 执行NSGA-II选择
     from operations.selecting.selecting_multi import non_dominated_sort, crowding_distance
     fronts = non_dominated_sort(objectives)
     
@@ -141,7 +129,6 @@ def adaptive_multi_objective_selection(molecules_data: List[Dict], n_select: int
         if len(selected_molecules) + len(front) <= n_select:
             selected_molecules.extend([molecules_data[i] for i in front])
         else:
-            # 使用拥挤度距离选择
             distances = crowding_distance(objectives, front)
             sorted_by_crowding = sorted(zip(front, distances), 
                                       key=lambda x: x[1], reverse=True)
@@ -161,27 +148,17 @@ def load_molecules_with_scores_and_deduplicate(parent_file: str, docked_file: st
     加载并合并父代和子代分子数据，自动去重
     """
     from operations.selecting.selecting_multi import load_molecules_with_scores
-    
-    # 加载父代分子
     parent_molecules = load_molecules_with_scores(parent_file)
     logger.info(f"从父代文件加载了 {len(parent_molecules)} 个分子")
-    
-    # 加载子代分子  
     offspring_molecules = load_molecules_with_scores(docked_file)
     logger.info(f"从子代文件加载了 {len(offspring_molecules)} 个分子")
-    
-    # 合并并去重：使用字典以SMILES为key，保留分数更好的分子
     molecules_dict = {}
     total_before_dedup = len(parent_molecules) + len(offspring_molecules)
-    
-    # 先添加父代分子
     for mol in parent_molecules:
         smiles = mol['smiles']
         score = mol['docking_score']
         if smiles not in molecules_dict or score < molecules_dict[smiles]['docking_score']:
             molecules_dict[smiles] = mol
-    
-    # 然后添加子代分子（保留更好分数的）
     for mol in offspring_molecules:
         smiles = mol['smiles']
         score = mol['docking_score']
@@ -238,7 +215,7 @@ def main():
         logger.error("严格QED/SA计算后无可用分子，无法进行选择。")
         return
     
-    # 3. 使用自适应多目标选择
+    # 3. 使用多目标选择
     selected_molecules = adaptive_multi_objective_selection(
         molecules, args.n_select, args.generation, args.max_generations
     )
