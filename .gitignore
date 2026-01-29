@@ -1,6 +1,7 @@
 mgltools_x86_64Linux2_1.5.6/*
 fragmlm/weights/*
 output/*
+.ipynb_checkpoints/
 *.pyc
 FragEvo_output_compscore/*
 *.pdbqtqt
