@@ -161,7 +161,7 @@
     "pipeline": "obabel_fast",
     "dock_choice": "VinaDocking",
     "conversion_choice": "MGLToolsConversion",
-    "docking_exhaustiveness": 1,
+    "docking_exhaustiveness": 8,
     "docking_num_modes": 10,
     "pass_vina_params": true,
     "seed": 42,

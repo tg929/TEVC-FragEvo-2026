@@ -35,6 +35,7 @@ cd ..
 Place the docking executable under the project root, or use the bundled executables under `./autogrow/docking/docking_executables/`.
 ```bash
 chmod +x ./autodock_vina_*/bin/vina
+chmod +x ./q_vina_2/q_vina_2_1_linux/qvina02
 ```
 
 
