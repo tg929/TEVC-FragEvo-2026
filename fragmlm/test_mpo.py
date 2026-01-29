@@ -57,7 +57,6 @@ def main_test(args):
     mconf = GPTConfig(vocab_size=tokenizer.vocab_size, n_layer=12, n_head=12, n_embd=768)
     model = GPT(mconf).to(device)
     checkpoint = torch.load(f'./weights/linkergpt.pt', weights_only=True)
-    # checkpoint = torch.load(f'/data1/yzf/molecule_generation/a/LinkerGPT/weights/{args.run_name}.pt', weights_only=True)
     model.load_state_dict(checkpoint)
     start_time = time.time()
     Test(model, tokenizer, device=device, output_file_path="./output")
@@ -84,6 +83,6 @@ if __name__ == '__main__':
     # wandb.init(project="lig_gpt", name=opt.run_name)
     world_size = opt.world_size
     # mp.spawn(main, args=(world_size, opt), nprocs=world_size)
-    # os.chdir('/home/yzf/data/molecule_generation/fragmlm')
+    # os.chdir('/data/molecule_generation/fragmlm')
     main_test(opt)
 
