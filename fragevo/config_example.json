@@ -32,10 +32,10 @@
       "size_y": 16.0,
       "size_z": 25.0
     },
-    "target_list": {      
+    "target_list": {
       "4r6e": {
         "name": "4r6e",
-        "description": "4r6e receptor", 
+        "description": "4r6e receptor",
         "file": "pdb1/4r6e.pdb",
         "center_x": -70.76,
         "center_y": 21.82,
@@ -47,7 +47,7 @@
       "3pbl": {
         "name": "3pbl",
         "description": "3pbl receptor",
-        "file": "pdb1/3pbl.pdb", 
+        "file": "pdb1/3pbl.pdb",
         "center_x": 9.0,
         "center_y": 22.5,
         "center_z": 26.0,
@@ -67,7 +67,7 @@
         "size_z": 15.0
       },
       "2rgp": {
-        "name": "2rgp", 
+        "name": "2rgp",
         "description": "2rgp receptor",
         "file": "pdb1/2rgp.pdb",
         "center_x": 16.29212,
@@ -79,7 +79,7 @@
       },
       "3eml": {
         "name": "3eml",
-        "description": "3eml receptor", 
+        "description": "3eml receptor",
         "file": "pdb1/3eml.pdb",
         "center_x": -9.06363,
         "center_y": -7.14446,
@@ -91,7 +91,7 @@
       "3ny8": {
         "name": "3ny8",
         "description": "3ny8 receptor",
-        "file": "pdb1/3ny8.pdb", 
+        "file": "pdb1/3ny8.pdb",
         "center_x": 2.2488,
         "center_y": 4.68495,
         "center_z": 51.382000000001,
@@ -186,7 +186,8 @@
       "available_selectors": [
         "Rank_Selector",
         "Roulette_Selector",
-        "Tournament_Selector" ],
+        "Tournament_Selector"
+      ],
       "n_select": 100,
       "selector_choice": "Rank_Selector",
       "tourn_size": 0.1
@@ -211,10 +212,10 @@
       "enable_crowding_distance": true,
       "verbose": false
     }
-  },  
+  },
   "workflow": {
     "seed": 42,
-    "initial_population_file": "datasets/initial_population/my_initial_population.smi",
+    "initial_population_file": "datasets/initial_population/initial_population.smi",
     "output_directory": "GA_output",
     "max_generations": 15,
     "early_stopping_patience": 3,

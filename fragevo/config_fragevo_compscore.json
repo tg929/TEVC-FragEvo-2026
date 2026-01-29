@@ -50,7 +50,7 @@
         "qed_min": 0.5,
         "sa_max": 5.0,
         "ds_active_median": -7.5,
-        "reference_smiles_file": "datasets/initial_population/my_initial_population.smi",
+        "reference_smiles_file": "datasets/initial_population/initial_population.smi",
         "fp_type": "morgan",
         "fp_radius": 2,
         "fp_nbits": 2048
